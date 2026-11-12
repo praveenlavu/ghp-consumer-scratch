@@ -1,0 +1,48 @@
+name: ghp checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited, closed]
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    if: github.event.action != 'closed'
+    permissions:
+      contents: read
+      issues: read
+    uses: praveenlavu/spec-kit-ghp/.github/workflows/ghp-gate.yml@cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+    with:
+      ghp_ref: cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+
+  branch-guard:
+    if: github.event.action != 'closed'
+    permissions:
+      contents: read
+      issues: read
+    uses: praveenlavu/spec-kit-ghp/.github/workflows/ghp-branch-guard.yml@cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+    with:
+      ghp_ref: cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+
+  strict-verify:
+    if: github.event.action != 'closed'
+    permissions:
+      contents: read
+    uses: praveenlavu/spec-kit-ghp/.github/workflows/ghp-strict-verify.yml@cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+    with:
+      ghp_ref: cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+      allow-override: false
+
+  link:
+    if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    permissions:
+      contents: read
+      issues: write
+    uses: praveenlavu/spec-kit-ghp/.github/workflows/ghp-link-on-merge.yml@cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+    with:
+      ghp_ref: cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+      close-story: false
+    secrets:
+      GHP_PROJECT_TOKEN: ${{ secrets.GHP_PROJECT_TOKEN }}

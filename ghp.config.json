@@ -1,0 +1,5 @@
+{
+  "owner": "praveenlavu",
+  "repo": "ghp-consumer-scratch",
+  "gate": {"block": ["ac_traceability"]}
+}
