@@ -13,26 +13,26 @@ jobs:
     permissions:
       contents: read
       issues: read
-    uses: praveenlavu/spec-kit-ghp/.github/workflows/ghp-gate.yml@cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+    uses: praveenlavu/spec-kit-ghp/.github/workflows/ghp-gate.yml@e440627644e6e5268ef3ce19ee4547f75799e03d
     with:
-      ghp_ref: cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+      ghp_ref: e440627644e6e5268ef3ce19ee4547f75799e03d
 
   branch-guard:
     if: github.event.action != 'closed'
     permissions:
       contents: read
       issues: read
-    uses: praveenlavu/spec-kit-ghp/.github/workflows/ghp-branch-guard.yml@cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+    uses: praveenlavu/spec-kit-ghp/.github/workflows/ghp-branch-guard.yml@e440627644e6e5268ef3ce19ee4547f75799e03d
     with:
-      ghp_ref: cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+      ghp_ref: e440627644e6e5268ef3ce19ee4547f75799e03d
 
   strict-verify:
     if: github.event.action != 'closed'
     permissions:
       contents: read
-    uses: praveenlavu/spec-kit-ghp/.github/workflows/ghp-strict-verify.yml@cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+    uses: praveenlavu/spec-kit-ghp/.github/workflows/ghp-strict-verify.yml@e440627644e6e5268ef3ce19ee4547f75799e03d
     with:
-      ghp_ref: cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+      ghp_ref: e440627644e6e5268ef3ce19ee4547f75799e03d
       allow-override: false
 
   link:
@@ -40,9 +40,9 @@ jobs:
     permissions:
       contents: read
       issues: write
-    uses: praveenlavu/spec-kit-ghp/.github/workflows/ghp-link-on-merge.yml@cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+    uses: praveenlavu/spec-kit-ghp/.github/workflows/ghp-link-on-merge.yml@e440627644e6e5268ef3ce19ee4547f75799e03d
     with:
-      ghp_ref: cefd9fa4ca0ebefe7790fd9669b87fa683cd420a
+      ghp_ref: e440627644e6e5268ef3ce19ee4547f75799e03d
       close-story: false
     secrets:
       GHP_PROJECT_TOKEN: ${{ secrets.GHP_PROJECT_TOKEN }}
